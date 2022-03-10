@@ -11,7 +11,7 @@ VALUES
 ("Carpender", 50000.00, 1),
 ("Bus Driver", 25000.00, 2);
 
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
 ("John", "Smith", 1, 1),
 ("Jane", "Smith", 2, 1),
