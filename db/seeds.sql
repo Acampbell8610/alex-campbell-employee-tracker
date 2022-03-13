@@ -17,4 +17,4 @@ VALUES
 ("Jane", "Smith", 2, 1),
 ("Billy", "Jean", 3, 1),
 ("Roy", "Ocean", 4, 2),
-("Sandra", "Allen", 4, 2),
+("Sandra", "Allen", 4, 2);
