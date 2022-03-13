@@ -2,6 +2,7 @@ const db = require("./db/connection");
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 
+//function that is the menu of questions
 const baseQuestions = () => {
   return inquirer
     .prompt([
@@ -22,6 +23,7 @@ const baseQuestions = () => {
     ])
     .then((projectData) => {
       console.log(projectData);
+      //gives each answer a function to call
       switch (projectData.userAction) {
         case "view all departments":
           viewAllDepartments();
@@ -53,6 +55,7 @@ const baseQuestions = () => {
       }
     });
 };
+//to view all departments
 const viewAllDepartments = async () => {
   const sql = `SELECT * FROM department`;
   await db
@@ -62,9 +65,9 @@ const viewAllDepartments = async () => {
       console.table(rows);
     })
     .catch(console.log);
-  console.log("view dep");
   baseQuestions();
 };
+//views all roles
 const viewAllRoles = async () => {
   const sql = 
   'SELECT role.id, role.title, department.name AS department, role.salary FROM role INNER JOIN department ON role.department_id=department.id ORDER BY role.id'
@@ -75,9 +78,10 @@ const viewAllRoles = async () => {
       console.table(rows);
     })
     .catch(console.log);
-  console.log("view role");
+
   baseQuestions();
 };
+//views all employees
 const viewAllEmployees = async () => {
   const sql = 
   "SELECT a.id, a.first_name, a.last_name, role.title, department.name, CONCAT(b.first_name, ' ', b.last_name) AS manager FROM employee a JOIN role ON a.role_id=role.id JOIN department ON department.id=role.department_id LEFT JOIN employee b ON a.manager_id = b.id";
@@ -88,9 +92,9 @@ const viewAllEmployees = async () => {
       console.table(rows);
     })
     .catch(console.log);
-  console.log("view empl");
   baseQuestions();
 };
+//to add an employee
 const addEmployee = async () => {
   return inquirer
     .prompt([
@@ -163,7 +167,7 @@ const addEmployee = async () => {
       baseQuestions();
     });
 };
-
+//to add a department
 const addDepartment = () => {
   return inquirer
     .prompt([
@@ -192,7 +196,7 @@ const addDepartment = () => {
       baseQuestions();
     });
 };
-
+//to add a role
 const addRole = () => {
   return inquirer
     .prompt([
@@ -247,6 +251,7 @@ const addRole = () => {
       baseQuestions();
     });
 };
+//to update a employees role
 const updateEmployee = () => {
   const sql = `SELECT * FROM role`;
   db.promise()

@@ -11,10 +11,11 @@ VALUES
 ("Carpender", 50000.00, 1),
 ("Bus Driver", 25000.00, 2);
 
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-("John", "Smith", 1, 1),
-("Jane", "Smith", 2, 1),
+("John", "Smith", 1, 0),
+("Jane", "Smith", 2, 0),
 ("Billy", "Jean", 3, 1),
 ("Roy", "Ocean", 4, 2),
-("Sandra", "Allen", 4, 2);
+("Sandra", "Allen", 1, 1);
